@@ -15,7 +15,7 @@ sudo make install
 
 ## Example
 ```shell
-# Protect the file (defaults to 10 symbols per 255 bytes)
+# Protect the file (defaults to 10 symbols per 256 bytes)
 cat file | aqua protect > file2
 # Corrupts 5 bytes of the first part of the file
 dd if=/dev/urandom of=file2 bs=1 count=5 seek=0 conv=notrunc 

@@ -16,11 +16,14 @@ sudo make install
 ## Example
 ```shell
 # Protect the file (defaults to 10 symbols per 256 bytes)
-cat file | aqua protect > file2
+cat file | aqua protect > file.aqua
 # Corrupts 5 bytes of the first part of the file
-dd if=/dev/urandom of=file2 bs=1 count=5 seek=0 conv=notrunc 
+dd if=/dev/urandom of=file.aqua bs=1 count=5 seek=0 conv=notrunc 
 # Corrupts 5 bytes of the another part of the file
-dd if=/dev/urandom of=file2 bs=1 count=5 seek=1000 conv=notrunc
+dd if=/dev/urandom of=file.aqua bs=1 count=5 seek=1000 conv=notrunc
 # File can still be fully recovered
-cat file2 | aqua purify
+cat file.aqua | aqua purify > file2
+# Proof
+md5sum file
+md5sum file2
 ```
